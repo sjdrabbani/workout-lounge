@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml-rails'
+gem 'bootstrap-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,6 +48,8 @@ group :development, :test do
 end
 
 group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
   gem 'guard', '~> 2.14'
   gem 'guard-rspec', '~> 4.7.2'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

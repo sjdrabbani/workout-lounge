@@ -1,4 +1,3 @@
-!!!
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
@@ -7,6 +6,18 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = link_to 'Home', root_path
-    = link_to 'Athletes Den', root_path
-    = yield
+    %header{role: 'banner'}
+      %nav{class: 'navbar navbar-default navbar-fixed-top', role: 'navigation'}
+        .container-fluid
+          .navbar-header
+            %button{type: 'button', class: 'navbar-toggle', 'data-toggle' => 'collapse', 'data-target' => '#bs-example-navbar-collapse-1'}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            = link_to 'Athletes Den', root_path, {class: 'navbar-brand'}  
+          .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-1'}
+            %ul.nav.navbar-nav
+              %li.active= link_to 'Home', root_path
+
+    .container
+      = yield
