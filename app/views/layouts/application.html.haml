@@ -18,6 +18,11 @@
           .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-1'}
             %ul.nav.navbar-nav
               %li.active= link_to 'Home', root_path
-
-    .container
+            %ul.nav.navbar-nav.navbar-right
+              %li= link_to 'Sign up', new_user_registration_path
+    .row
+      .col-md-12
+        - flash.each do |key, message|
+          .text-center.alert{ class: "alert-#{key == 'notice'? 'success' : 'danger'}" }
+            = message
       = yield
