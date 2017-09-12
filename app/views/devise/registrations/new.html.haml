@@ -1,7 +1,7 @@
 %h2.text-center
   Sign up
 
-.col-md-12
+.col-md-10
   = form_for(resource, as: resource_name, html: {class: 'form-horizontal'}, url: registration_path(resource_name)) do |f|
     = devise_error_messages!
 
@@ -22,7 +22,7 @@
       .col-md-9
         = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
     .form-group
-      .col-md-offset-3.col-md-9
+      .col-md-offset-3.col-md9
         = f.submit 'Sign up', class: 'btn btn-success btn-lg'
     .form-group
       .col-md-offset-3.col-md-9
