@@ -1,16 +1,12 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
 body {
-  margin-top: 90px;
+  margin-top: 80px;
 }
-
 // navbar styling
-
 .navbar {
-  background: #5A1CAB;
+  background: orange;
 }
-
 .navbar-header a.navbar-brand {
   color: #ffffff;
   padding-top: 25px;
@@ -18,45 +14,105 @@ body {
   font-size: 150%;
   font-weight: bold;
 }
-
 .navbar-header a.navbar-brand:hover {
   color: #ff0000;
 }
-
 .nav > li > a {
   padding-top: 25px;
   padding-bottom: 30px;
 }
-
 .navbar-default .navbar-nav > .active > a {
-  background: #5A1CAB;
-  color: #ffffff
+  background: orange;
+  color: #ffffff;
 }
-
 .navbar-default .navbar-nav > .active > a:hover {
-  background: #5A1CAB;
+  background: orange;
   color: #ff0000;
 }
-
 .navbar-default .navbar-nav > li > a {
   color: #ffffff;
   font-size: 130%;
 }
-
 .navbar-default .navbar-nav > li > a:hover {
   color: #ff0000;
 }
-
-// Devise error messages
-
+// Devise Error Messages
 #error_explanation {
-  background-color: #f2dede;
-  color: #a94442;
-  text-align: left;
-  padding: 5px 20px;
+ background-color: #f2dede;
+ color: #a94442;
+ text-align: left;
+ padding: 5px 20px;
+ margin-bottom: 30px;
+}
+#error_explanation h2 {
+ font-size: 150%;
+}
+.signed-in-user {
+  padding-top: 10px;
+  padding-right: 20px;
+}
+.signed-in-user .navbar-text {
+  color: #ffffff;
+}
+// Link styling
+.link {
+  margin-bottom: 5px;
+}
+#back-btn {
+  margin-left: -10px;
+  margin-top: 30px;
+}
+.destroy-btn:hover {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 120%;
+}
+// Chart Styling
+path {
+  stroke: steelblue; stroke-width: 2; fill: none;
+}
+.axis path, .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+#chat-window {
+  border: 1px solid #76C95B;
+  margin-top: 50px;
   margin-bottom: 30px;
 }
-
-#error_explanation h2 {
-  font-size: 150%;
+#chat-window header {
+  background: #76C95B;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff;
+  font-size: 120%;
+}
+#chat-box {
+  min-height: 100px;
+}
+#message-field {
+  width: 96%;
+}
+.message-body {
+  margin-bottom: 2px;
+}
+hr.msg {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#followers {
+  border-right: 1px solid #76C95B;
+}
+.followers {
+  margin-left: -15px;
+}
+#form-box {
+  margin-left: -15px;
+}
+#post-btn {
+  margin-right: -35px;
 }
