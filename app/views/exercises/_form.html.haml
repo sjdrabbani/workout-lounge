@@ -1,0 +1,31 @@
+.row
+  .col-md-12
+    = form_for([current_user, @exercise], html: { class: 'form-horizontal', role: 'form' }) do |f|
+      - if @exercise.errors.any?
+        #error_explanation
+          %h2="#{pluralize(@exercise.errors.count, 'error')} prohibited this exercise from being saved:"
+          %ul
+            - @exercise.errors.full_messages.each do |message|
+              %li= message
+      
+      .form-group
+        .control-label.col-md-2
+          = f.label :duration_in_min, 'Duration (min)'
+        .col-md-10
+          = f.number_field :duration_in_min, class: 'form-control'
+
+      .form-group
+        .control-label.col-md-2
+          = f.label :workout, 'Workout details'
+        .col-md-10
+          = f.text_area :workout, class: 'form-control'
+
+      .form-group                                         
+        .control-label.col-md-2
+          = f.label :workout_date, 'Activity date'
+        .col-md-10
+          = f.text_field :workout_date, class: 'form-control'
+
+      .form-group
+        .col-md-offset-2.col-md-10
+          = f.submit class: 'btn btn-success btn-lg'
