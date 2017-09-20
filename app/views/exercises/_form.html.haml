@@ -3,9 +3,7 @@
     = form_for([current_user, @exercise], html: { class: 'form-horizontal', role: 'form' }) do |f|
       - if @exercise.errors.any?
         #error_explanation
-          
-          
-
+          %h2="#{pluralize(@exercise.errors.count, 'error')} prohibited this exercise from being saved:"
           %ul
             - @exercise.errors.full_messages.each do |message|
               %li= message
