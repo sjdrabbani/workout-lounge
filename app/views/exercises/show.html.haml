@@ -1,0 +1,29 @@
+.col-xs-12.col-md-10.col-md-offset-1
+  %div
+    %h2.show-header
+      = "Showing #{@exercise.user.full_name}'s Workout Details"
+
+  .col-xs-12.col-md-10.well.member
+    .col-xs-4
+      %strong Duration (min):
+    .col-xs-8.text-right
+      = @exercise.duration_in_min
+
+  .col-xs-12.col-md-10.well.member
+    .col-xs-4
+      %strong Workout details:
+    .col-xs-8.text-right
+      = truncate(@exercise.workout, length: 50)
+
+  .col-xs-12.col-md-10.well.member
+    .col-xs-4
+      %strong Activity date:
+    .col-xs-8.text-right
+      = @exercise.workout_date
+
+  %br
+  %br
+
+  .col-xs-12.col-md-10.member
+    = link_to 'Back', user_exercises_path(current_user), class: 'btn btn-success btn-lg link', id: 'back-btn'
+
