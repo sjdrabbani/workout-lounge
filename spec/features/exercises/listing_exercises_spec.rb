@@ -18,7 +18,6 @@ RSpec.feature 'Listing exercises' do
 
   scenario "shows user's workout for last 7 days" do
     visit '/'
-
     click_link 'My Lounge'
 
     expect(page).to have_content(@exercise_one.duration_in_min)
@@ -32,6 +31,15 @@ RSpec.feature 'Listing exercises' do
     expect(page).not_to have_content(@exercise_three.duration_in_min)
     expect(page).not_to have_content(@exercise_three.workout)
     expect(page).not_to have_content(@exercise_three.workout_date)
+  end
+
+  scenario "shows no workout if none is created" do
+    @john.exercises.delete_all
+
+    visit '/'
+    click_link 'My Lounge'
+
+    expect(page).to have_content('No Workouts yet')
   end
 end
 
