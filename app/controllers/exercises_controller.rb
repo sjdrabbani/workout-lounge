@@ -1,7 +1,7 @@
 class ExercisesController < ApplicationController
 
   def index
-
+    @exercises = current_user.exercises.where('workout_date >= ?', 7.days.ago)
   end
 
   def show
