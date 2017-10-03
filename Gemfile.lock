@@ -74,6 +74,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    d3-rails (4.1.0)
+      railties (>= 3.1)
     database_cleaner (1.6.1)
     debug_inspector (0.0.2)
     devise (4.3.0)
@@ -273,6 +275,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)
+  d3-rails (= 4.1.0)
   database_cleaner
   devise (~> 4.2)
   guard (~> 2.14)
