@@ -7,9 +7,19 @@
 
     .form-group
       .control-label.col-md-3
+        = f.label :first_name
+      .col-md-9
+        = f.text_field :first_name, autofocus: true, class: 'form-control'
+    .form-group
+      .control-label.col-md-3
+        = f.label :last_name
+      .col-md-9
+        = f.text_field :last_name, autocomplete: "off", class: 'form-control'
+
+      .control-label.col-md-3
         = f.label :email
       .col-md-9
-        = f.email_field :email, autofocus: true, class: 'form-control'
+        = f.email_field :email, class: 'form-control'
     .form-group
       .control-label.col-md-3
         = f.label :password
