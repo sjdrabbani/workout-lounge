@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.feature 'Listing members' do
   before do
-    @john = User.create(firstname: 'John',
+    @john = User.create(first_name: 'John',
                         last_name: 'Doe',
                         email: 'john@example.com',
                         password: 'password')
-    @sarah = User.create(firstname: 'Sarah',
+    @sarah = User.create(first_name: 'Sarah',
                         last_name: 'Jones',
                         email: 'sarah@example.com',
                         password: 'password')
