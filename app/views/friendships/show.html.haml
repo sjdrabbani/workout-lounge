@@ -1,0 +1,27 @@
+.col-md-8
+  %p#notice
+    = notice
+
+  %h1= "#{@friend.full_name}'s Exercises"
+
+  %table.table.table-stripped
+    %thead
+      %tr
+        %th Duration (min)
+        %th Workout
+        %th Activity Date
+
+    %tbody
+      - @exercises.each do |exercise|
+        %tr
+          %td= exercise.duration_in_min
+          %td= truncate(exercise.workout, length: 100)
+          %td= exercise.workout_date
+
+  %br
+
+  = content_tag :div, "", id: 'chart', data: { workouts: @exercises }
+
+  = link_to 'Back', user_exercises_path(current_user),
+    class: 'btn btn-success btn-lg link'
+
