@@ -10,8 +10,14 @@ class User < ApplicationRecord
   self.per_page =10
 
   has_many :exercises
+  has_many :friendships
+  has_many :friends, through: :friendships, class_name: 'User'
 
   def full_name
     [first_name, last_name].join(' ')
+  end
+
+  def follows_or_same?(new_friend)
+    friendships.map(&:friend).include?(new_friend) || self == new_friend
   end
 end
