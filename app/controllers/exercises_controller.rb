@@ -3,6 +3,7 @@ class ExercisesController < ApplicationController
 
   def index
     @exercises = current_user.exercises.where('workout_date >= ?', 7.days.ago)
+    @friends = current_user.friends
   end
 
   def show
