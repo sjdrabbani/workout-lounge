@@ -33,6 +33,14 @@
   = content_tag :div, '', id: 'chart', data: { workouts: @exercises }
 
 .col-md-4.col-xs-12
+  #chat-window
+    %header= current_room.name
+
+    #form-box
+      = form_for @message do |f|
+        = f.text_field body, id: 'message-field', class: 'form-control pull-left'
+        = f.submit 'Post', class: 'btn btn-default', id: 'post-btn'
+
   %h1.text-center
     My Friends
 
