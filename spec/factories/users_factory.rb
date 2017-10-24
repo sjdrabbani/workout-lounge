@@ -12,4 +12,11 @@ FactoryGirl.define do
     email 'sarah@example.com'
     password 'password'
   end
+
+  factory :henry, class: 'User' do
+    first_name 'Henry'
+    last_name 'Anderson'
+    email 'henry@example.com'
+    password 'password'
+  end
 end

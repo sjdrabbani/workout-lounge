@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, class_name: 'User'
   has_one :room
+  has_many :messages
 
   def full_name
     [first_name, last_name].join(' ')

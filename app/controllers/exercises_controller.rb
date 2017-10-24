@@ -4,6 +4,10 @@ class ExercisesController < ApplicationController
   def index
     @exercises = current_user.exercises.where('workout_date >= ?', 7.days.ago)
     @friends = current_user.friends
+    set_current_room
+    @message = Message.new
+    @messages = current_room.messages if current_room.present?
+    @followers = Friendship.where(friend: current_user)
   end
 
   def show
@@ -52,5 +56,14 @@ class ExercisesController < ApplicationController
 
   def exercise_params
     params.require(:exercise).permit(:duration_in_min, :workout, :workout_date, :user_id)
+  end
+
+  def set_current_room
+    if params[:room_id]
+      @room = Room.find_by(id: params[:room_id])
+    else
+      @room = current_user.room
+    end
+    session[:current_room] = @room.id if @room.present?
   end
 end

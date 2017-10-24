@@ -14,7 +14,7 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            = link_to 'Athletes Den', root_path, {class: 'navbar-brand'}  
+            = link_to 'Athletes Den', root_path, {class: 'navbar-brand'}
           .navbar-collapse.collapse{id: 'bs-example-navbar-collapse-1'}
             %ul.nav.navbar-nav
               %li.active= link_to 'Home', root_path
@@ -29,14 +29,16 @@
             - if user_signed_in?
               .navbar-right
                 %p.navbar-text
-                  Signed in as 
+                  Signed in as
                   = current_user.email
-    .row
-      .col-md-12
-        - flash.each do |key, message|
-          .text-center.alert{ class: "alert-#{key == 'notice'? 'success' : 'danger'}" }
-            = message
-      .container
-        = yield
+    %div{ class: "#{content_for?(:whole_page) ? 'container-fluid' : 'container'}" }
+      .row
+        .col-md-12
+          - flash.each do |key, message|
+            .text-center.alert{ class: "alert-#{key == 'notice'? 'success' : 'danger'}" }
+              = message
+
+          = yield
+          = yield :whole_page
 
     = render partial: 'shared/footer'
