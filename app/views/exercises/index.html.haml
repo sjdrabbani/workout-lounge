@@ -1,5 +1,5 @@
 = content_for(:whole_page) do
-  .col-md-8.col-xs-12
+  .col-md-7.col-xs-12
     - unless @exercises.empty?
       %h1 Listing Exercises
 
@@ -33,8 +33,8 @@
 
     = content_tag :div, '', id: 'chart', data: { workouts: @exercises }
 
-  .col-md-4.col-xs-12
-    #chat-window
+  .col-md-5.col-xs-12
+    #chat-window.col-md-12
       %header.text-center= "Channel: #{current_room.name}"
 
       #followers.col-md-2
@@ -42,15 +42,15 @@
           = link_to follower.user.full_name,
               user_exercises_path(current_user, room_id: follower.user.room.id),
               class: 'followers'
+      #messages-box.col-md-10
+        #chat-box{ 'data-channel' => 'rooms', 'data-room-id' => "#{current_room.id}" }
+          - @messages.each do |message|
+            = render partial: 'shared/message', locals: { message: message }
 
-      #chat-box{ 'data-channel' => 'rooms', 'data-room-id' => "#{current_room.id}" }
-        - @messages.each do |message|
-          = render partial: 'shared/message', locals: { message: message }
-
-      #form-box
-        = form_for @message do |f|
-          = f.text_field :body, id: 'message-field', class: 'form-control pull-left'
-          = f.submit 'Post', class: 'btn btn-default', id: 'post-btn'
+        #form-box
+          = form_for @message do |f|
+            = f.text_field :body, id: 'message-field', class: 'form-control pull-left'
+            = f.submit 'Post', class: 'btn btn-default', id: 'post-btn'
 
     %h1.text-center
       My Friends
