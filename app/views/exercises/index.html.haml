@@ -1,70 +1,71 @@
-.col-md-8.col-xs-12
-  - unless @exercises.empty?
-    %h1 Listing Exercises
+= content_for(:whole_page) do
+  .col-md-8.col-xs-12
+    - unless @exercises.empty?
+      %h1 Listing Exercises
 
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Duration (min)
-          %th Workout details
-          %th Activity date
-          %th{colspan: 3}
-      %tbody
-        - @exercises.each do |exercise|
+      %table.table.table-striped
+        %thead
           %tr
-            %td= exercise.duration_in_min
-            %td= exercise.workout
-            %td= exercise.workout_date
-            %td= link_to 'Show', [current_user, exercise]
-            %td= link_to 'Edit', [:edit, current_user, exercise]
-            %td= link_to 'Delete', [current_user, exercise],
-              method: :delete, data: { confirm: 'Are you sure?' }
+            %th Duration (min)
+            %th Workout details
+            %th Activity date
+            %th{colspan: 3}
+        %tbody
+          - @exercises.each do |exercise|
+            %tr
+              %td= exercise.duration_in_min
+              %td= exercise.workout
+              %td= exercise.workout_date
+              %td= link_to 'Show', [current_user, exercise]
+              %td= link_to 'Edit', [:edit, current_user, exercise]
+              %td= link_to 'Delete', [current_user, exercise],
+                method: :delete, data: { confirm: 'Are you sure?' }
 
-    %br
-    %br
-  - else
-    .alert.alert-danger.message-font.text-center{ role: :alert }
-      No Workouts yet
-    %br
+      %br
+      %br
+    - else
+      .alert.alert-danger.message-font.text-center{ role: :alert }
+        No Workouts yet
+      %br
 
-  = link_to 'New Workout', new_user_exercise_path(current_user),
-    class: 'btn btn-success link'
-  
-  = content_tag :div, '', id: 'chart', data: { workouts: @exercises }
+    = link_to 'New Workout', new_user_exercise_path(current_user),
+      class: 'btn btn-success link'
 
-.col-md-4.col-xs-12
-  #chat-window
-    %header= current_room.name
+    = content_tag :div, '', id: 'chart', data: { workouts: @exercises }
 
-    #followers.col-md-2
-      - @followers.each do |follower|
-        = link_to follower.user.full_name,
-            user_exercises_path(current_user, room_id: follower.user.room.id),
-            class: 'followers'
+  .col-md-4.col-xs-12
+    #chat-window
+      %header.text-center= "Channel: #{current_room.name}"
 
-    #chat-box{ 'data-channel' => 'rooms', 'data-room-id' => "#{current_room.id}" }
-      - @messages.each do |message|
-        = render partial: 'shared/message', locals: { message: message }
+      #followers.col-md-2
+        - @followers.each do |follower|
+          = link_to follower.user.full_name,
+              user_exercises_path(current_user, room_id: follower.user.room.id),
+              class: 'followers'
 
-    #form-box
-      = form_for @message do |f|
-        = f.text_field :body, id: 'message-field', class: 'form-control pull-left'
-        = f.submit 'Post', class: 'btn btn-default', id: 'post-btn'
+      #chat-box{ 'data-channel' => 'rooms', 'data-room-id' => "#{current_room.id}" }
+        - @messages.each do |message|
+          = render partial: 'shared/message', locals: { message: message }
 
-  %h1.text-center
-    My Friends
+      #form-box
+        = form_for @message do |f|
+          = f.text_field :body, id: 'message-field', class: 'form-control pull-left'
+          = f.submit 'Post', class: 'btn btn-default', id: 'post-btn'
 
-  - @friends.each do |friend|
-    .col-md-offset-3.col-md-6.friend-name
-      = link_to friend.full_name, friendship_path(current_user.current_friendship(friend))
+    %h1.text-center
+      My Friends
 
-    .col-md-3
-      .btn-unfollow
-        = link_to 'Unfollow', friendship_path(current_user.current_friendship(friend)), 
-          method: :delete, data: {comfirm: 'Are you sure?'},
-          class: 'btn btn-success link'
+    - @friends.each do |friend|
+      .col-md-offset-3.col-md-6.friend-name
+        = link_to friend.full_name, friendship_path(current_user.current_friendship(friend))
 
-  :javascript
-    $(document).ready(function() {
-      drawChart();
-    });
+      .col-md-3
+        .btn-unfollow
+          = link_to 'Unfollow', friendship_path(current_user.current_friendship(friend)),
+            method: :delete, data: {comfirm: 'Are you sure?'},
+            class: 'btn btn-success link'
+
+    :javascript
+      $(document).ready(function() {
+        drawChart();
+      });
